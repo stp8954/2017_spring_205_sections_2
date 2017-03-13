@@ -1,0 +1,18 @@
+I used the conditions like "Heart Attack or Chest Pain" , "Heart Failure" as the type of procedures provided by the provider.
+
+I first calculated the procedure score for each provider by summing the measure score for each procedure. Provider procedures with even a single missing measure score were excluded form the result set.
+Once procedure score was calculated for each provider, the grouped the result set by procedure and calculated the standard deviation of the procedure score across all providers, then ordered by the standard deviation in descending order. 
+
+
+Here are the procedures with highest variability across providers
+
+Procedure, score_std_deviation
+--------------------------------------------
+emergency department    50.306130582599465
+heart failure   42.024024318573105
+stroke care     35.0509686438302
+preventive care 32.01539033999442
+blood clot prevention and treatment     26.166511870769803
+children's asthma       13.120816132094156
+pneumonia       9.275894472939902
+pregnancy and delivery care     6.958257962124782

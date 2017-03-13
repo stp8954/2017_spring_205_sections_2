@@ -1,0 +1,16 @@
+To find the states with best overall care, I basically used the same logic used for calculating hospital score. Then grouped all hospitals based on state and summed the individual provider score. The total score is devided by the total number of qualified providers in the state. This normalizes the score in a way that stated with lots of low score providers dont get ranked higher.
+
+Following are the states with good providers
+
+state, total_score, provider_count
+----------------------------------
+wi      861.4666666666666
+wv      833.4
+ia      821.9933333333333
+co      820.73
+mo      819.072
+in      800.0
+tx      793.1042857142857
+me      790.5600000000001
+nc      787.4293333333334
+ma      787.3159999999999

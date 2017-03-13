@@ -1,0 +1,38 @@
+
+For finding best hospitals, I combined the scores based on effective care, readmissions and surveys. Each score was weighted with survey score contributing 50% to the total score and effective care and readmissions contibuting 30% and 20% respectively. I decided to weigh patient survey response higher since it usualy reflects the overall experience including the procedure and personal care.
+
+The total survey score was calculated by adding up all the response score. Providers with even a single response missing were removed from the result set. The reason being a missing data point could mean either the procedure was not provided by the provider or there were very few samples to make any meaningful conclusion.
+
+The total readmission score was calculated by summing the individual measure score and the "compared_to_national" score. 
+Providers with fewer than 5 measure scores reported are excluded form the result set.
+
+"Compared_to_national" score was encoded as follows
+
+CASE
+	WHEN lower(compared_to_national) == "better than the national rate" THEN 10
+	WHEN lower(compared_to_national) == "no different than the national rate" THEN 5 
+	WHEN lower(compared_to_national) == "worse than the national rate" THEN 1
+	WHEN lower(compared_to_national) == "number of cases too small" THEN -1
+	WHEN lower(compared_to_national) == "not available" THEN -1
+	ELSE -1
+END 
+
+
+The total effective care score is calculated by summing individual condition score like "Emergency Department" , "Heart Attack or Chest Pain" etc.
+The condition score is calculated by summing the scores for measures for each condition.
+Conditions with even single missing score were excluded from result set and providers with less then 7 condition score were excluded form the ranking
+
+Based on the eabove criteria following are the top 10 hospitals
+
+provider_id, hospital_name
+----------------------------
+340001  CAROLINAS MEDICAL CENTER-NORTHEAST
+260020  MERCY HOSPITAL ST LOUIS
+520049  BELLIN MEMORIAL HOSPITAL
+440049  METHODIST HEALTHCARE MEMPHIS HOSPITALS
+450388  METHODIST HOSPITAL
+220002  MOUNT AUBURN HOSPITAL
+030065  BANNER DESERT MEDICAL CENTER
+330101  NEW YORK-PRESBYTERIAN HOSPITAL
+520008  WAUKESHA MEMORIAL HOSPITAL
+230072  HOLLAND COMMUNITY HOSPITAL
